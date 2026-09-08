@@ -1,0 +1,274 @@
+/* ──────────────────────────────────────────────────────────────────────────────
+   ART / COMICS SITE — SHARED STYLESHEET
+   Adapted from the YourManMark portfolio. Global reset, typography, layout,
+   header and footer base styles.
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Ark Sans (self-hosted, licensed) ── */
+@font-face {
+    font-family: 'Ark Sans';
+    src: url('fonts/ArkSans-Medium.woff2') format('woff2'),
+         url('fonts/ArkSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Global Reset & Box Sizing ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Body & Typography Base ── */
+body {
+    font-family: 'Roboto Mono', monospace;
+    color: #000;
+    background: #f0f0f0;
+}
+
+/* ── Frame: Single container that controls all horizontal spacing ── */
+.frame {
+    max-width: 980px;
+    padding: 0 40px;
+}
+
+/* ── Header ── */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #000;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: #ff2a63;   /* comics red instead of black */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+nav a {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+    background: #111;
+    color: #fff;
+    padding: 24px 40px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.base-bar {
+    height: 15px;
+    margin-top: 24px;
+    margin-left: -40px;
+    margin-right: -40px;
+    background: #ffc301;   /* solid comics yellow */
+}
+
+/* ── Animations: Fade + slide-in ── */
+.slide-in {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.slide-in.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .frame {
+        padding: 0 20px;
+    }
+
+    footer {
+        padding: 16px 20px 0;
+    }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   COMIC PREVIEW PAGES (e.g. monument.html) — story summary, genre, credits,
+   a page gallery. No purchase link; reused across future book previews.
+   ────────────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --yellow: #ffc301;
+    --red: #ff2a63;
+}
+
+.preview-hero {
+    padding: 40px 0 0;
+}
+
+.preview-hero h1 {
+    font-family: 'Ark Sans', 'Roboto', sans-serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+}
+
+.preview-hero__facts {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.preview-tag {
+    display: inline-block;
+    background: #000;
+    color: var(--yellow);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    margin-bottom: 24px;
+}
+
+.preview-full-image {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.preview-box {
+    background: #fff;
+    padding: 24px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.preview-box .color-bar {
+    height: 18px;
+    width: 280px;
+    margin: -24px 0 24px -24px;
+    background: var(--red);
+}
+
+.preview-box h2 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.preview-box p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 14px;
+    max-width: 640px;
+}
+
+.preview-box p:last-child {
+    margin-bottom: 0;
+}
+
+.credits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.credits-list p {
+    margin-bottom: 0;
+    font-size: 12px;
+    max-width: none;
+}
+
+.credits-list p strong {
+    font-weight: 700;
+    display: inline-block;
+    min-width: 160px;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.page-grid img {
+    width: 100%;
+    display: block;
+}
+
+.preview-nav {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #000;
+    padding: 20px 0;
+    margin-top: 15px;
+}
+
+.preview-nav a {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+}
+
+.preview-nav a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .preview-hero h1 {
+        font-size: 36px;
+    }
+
+    .page-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .credits-list p strong {
+        display: block;
+        min-width: 0;
+        margin-bottom: 2px;
+    }
+}

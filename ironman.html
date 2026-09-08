@@ -1,0 +1,266 @@
+<!-- Mark Britt — comic book art site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRON MAN — Mark Britt Comics</title>
+    <meta property="og:title" content="IRON MAN — Mark Britt Comics">
+    <meta property="og:description" content="Pepper Potts has a new piece of Stark Tech with her on the subway. Her trip to work quickly turns into a literal killer commute.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="site-images/SVG/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --yellow: #ffc301;
+            --red: #ff2a63;
+        }
+
+        body { font-family: 'Roboto Mono', monospace; }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: #f0f0f0;
+            border-bottom: 1px solid #000;
+            width: 100%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .brand .tagline strong { font-weight: 700; }
+
+        .nav-right a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .nav-right a:hover { text-decoration: underline; }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .menu-toggle .menu-caret {
+            color: #000;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-caret {
+            color: var(--red);
+            transform: rotate(180deg);
+        }
+
+        .menu-panel {
+            position: absolute;
+            top: 100%;
+            right: 40px;
+            width: 320px;
+            box-sizing: border-box;
+            background: #f0f0f0;
+            border: 1px solid #000;
+            border-top: none;
+            padding: 36px 32px;
+            display: none;
+            flex-direction: column;
+            z-index: 59;
+        }
+
+        .menu-panel.open { display: flex; }
+
+        .menu-panel a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            text-align: right;
+            padding: 16px 0;
+        }
+
+        .menu-panel a:hover { text-decoration: underline; }
+
+        .preview-hero__byline {
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            font-weight: 300;
+            margin: -6px 0 14px;
+        }
+
+        @media (max-width: 768px) {
+            .frame { padding: 0 20px; }
+
+            header {
+                flex-wrap: nowrap;
+                gap: 14px;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 20px;
+            }
+            .brand .tagline { display: none; }
+
+            .menu-panel { right: 20px; width: auto; left: 20px; padding: 28px 24px; }
+            .menu-panel a { font-size: 18px; padding: 14px 0; }
+
+            footer { padding: 16px 20px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <a href="index.html" class="logo-link" aria-label="Home">
+                <div class="logo">
+                    <img src="site-images/SVG/logo.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <span class="tagline"><strong>Mark Britt</strong> writes comic books.</span>
+        </div>
+        <div class="nav-right">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
+                MENU
+                <svg class="menu-caret" width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+                    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="menu-panel" id="menuPanel">
+            <a href="#">CONTACT</a>
+            <a href="foreditors.html">FOR EDITORS</a>
+            <a href="#">MAILING LIST</a>
+            <a href="index.html">HOME</a>
+        </nav>
+    </header>
+
+    <div class="frame">
+
+        <!-- Title + format facts -->
+        <section class="preview-hero">
+            <h1 class="slide-in">IRON MAN</h1>
+            <p class="preview-hero__byline">"Killer Commute" &mdash; a Pepper Potts one-shot</p>
+            <p class="preview-hero__facts">Digital short &nbsp;&middot;&nbsp; Marvel Comics &nbsp;&middot;&nbsp; Iron Man: Titanium #1, on the Marvel App</p>
+        </section>
+
+        <!-- Genre -->
+        <span class="preview-tag">Genre: Action-Comedy / Superhero Thriller</span>
+
+        <!-- Hero image -->
+        <img class="preview-full-image" src="site-images/ironman-preview/hero.webp" alt="A glowing gold piece of Stark Tech in a dark subway tunnel">
+
+        <!-- Summary -->
+        <div class="preview-box">
+            <div class="color-bar"></div>
+            <h2>Summary</h2>
+            <p>Okay, not exactly Iron Man. It's a story about Pepper Potts.</p>
+            <p>Pepper Potts has a new piece of Stark Tech with her on the subway, and what should be a routine ride to a Stark Enterprises board meeting turns into a literal killer commute. Between hungover ex-Stark engineers, a piece of confiscated villain armor, and a train full of very unlucky commuters, Pepper's "little trouble on the subway this morning" is a lot more than she lets on when she finally strolls into the boardroom.</p>
+        </div>
+
+        <!-- Page gallery -->
+        <div class="page-grid">
+            <img src="site-images/ironman-preview/page-01.webp" alt="Killer Commute title page and target ID sequence" loading="lazy">
+            <img src="site-images/ironman-preview/page-02.webp" alt="Iron Man preview page" loading="lazy">
+            <img src="site-images/ironman-preview/page-03.webp" alt="Iron Man preview page" loading="lazy">
+        </div>
+        <div class="page-grid">
+            <img src="site-images/ironman-preview/page-04.webp" alt="Iron Man preview page" loading="lazy">
+            <img src="site-images/ironman-preview/page-05.webp" alt="Iron Man preview page" loading="lazy">
+            <img src="site-images/ironman-preview/page-06.webp" alt="Iron Man preview page" loading="lazy">
+        </div>
+
+        <!-- Credits -->
+        <div class="preview-box">
+            <div class="color-bar"></div>
+            <h2>Credits</h2>
+            <div class="credits-list">
+                <p><strong>Writer</strong> Mark Britt</p>
+                <p><strong>Artist</strong> Nuno Plati</p>
+                <p><strong>Letterer</strong> Jeff Eckleberry</p>
+                <p><strong>Editor</strong> Michael Horwitz</p>
+                <p><strong>Publisher</strong> Marvel Comics</p>
+            </div>
+        </div>
+
+        <!-- Back to all comics -->
+        <nav class="preview-nav">
+            <a href="index.html">&larr; All Comics</a>
+        </nav>
+
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-row">
+            <p>
+                Based in the SF Bay Area.<br>
+                <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+                <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+            </p>
+            <nav class="footer-links">
+                <a href="mailto:markhavenbritt@gmail.com">Contact</a>
+            </nav>
+        </div>
+        <div class="base-bar"></div>
+    </footer>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('menuToggle');
+            const panel = document.getElementById('menuPanel');
+            if (!btn || !panel) return;
+            function closeMenu() { btn.setAttribute('aria-expanded', 'false'); panel.classList.remove('open'); }
+            function openMenu() { btn.setAttribute('aria-expanded', 'true'); panel.classList.add('open'); }
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                (btn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+            });
+            document.addEventListener('click', function (e) {
+                if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+            });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+        })();
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.slide-in').forEach(function (el) {
+                requestAnimationFrame(function () { el.classList.add('visible'); });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,643 @@
+<!-- Mark Britt — comic book art site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Britt — Comics</title>
+    <meta property="og:title" content="Mark Britt — Comics">
+    <meta property="og:description" content="Feral comic book stories made by a responsible adult.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="site-images/SVG/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --yellow: #ffc301;
+            --red: #ff2a63;
+        }
+
+        body { font-family: 'Roboto Mono', monospace; }
+
+        .desktop-break { display: block; }
+
+        .bleed { margin-left: -40px; margin-right: -40px; }
+
+        /* ── Header ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: #f0f0f0;
+            border-bottom: 1px solid #000;
+            width: 100%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        /* Reserve the width of the longest phrase so the header doesn't shift
+           while the text types/erases. */
+        .brand .tagline .typed-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand .tagline .typed-sizer {
+            visibility: hidden;
+            white-space: nowrap;
+        }
+
+        .brand .tagline .typed-live {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        .brand .tagline .typed strong { font-weight: 700; }
+
+        .brand .tagline .type-cursor {
+            display: inline-block;
+            width: 1px;
+            height: 1em;
+            margin-left: 1px;
+            background: #000;
+            vertical-align: text-bottom;
+            animation: type-blink 1s step-end infinite;
+        }
+
+        @keyframes type-blink {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .brand .tagline .type-cursor { animation: none; }
+        }
+
+        .nav-right a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .nav-right a:hover { text-decoration: underline; }
+
+        /* ── Page tag ── */
+        .page-tag {
+            display: inline-block;
+            background: #000;
+            color: var(--yellow);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 7px 14px;
+            margin-top: 32px;
+        }
+
+        /* ── Big Headline ── */
+        .headline { padding: 40px 0 28px; }
+
+        .headline h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 84px;
+            font-weight: 600;
+            line-height: 1.0;
+            letter-spacing: -1px;
+        }
+
+        .headline h1 .accent { font-weight: 600; }
+
+        /* ── Marquee Ticker ── */
+        .ticker {
+            background: var(--yellow);
+            color: #000;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker__track {
+            display: inline-block;
+            padding: 9px 0;
+            animation: ticker-scroll 28s linear infinite;
+        }
+
+        .ticker__track span {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .ticker__track .x {
+            display: inline-block;
+            margin: 0 14px;
+            vertical-align: middle;
+        }
+
+        .ticker__track .x img {
+            width: 13.2px;
+            height: 13.2px;
+            display: inline-block;
+        }
+
+        @keyframes ticker-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ── Hero Slideshow ── */
+        .hero-img {
+            position: relative;
+            height: 460px;
+            overflow: hidden;
+            background: #1c1c1c;
+        }
+
+        .hero-img .slides {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .hero-img .slides img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            display: block;
+        }
+
+        /* ── Black bio band ── */
+        .band {
+            background: #000;
+            color: #fff;
+            padding: 26px 40px;
+        }
+
+        .band__inner {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            max-width: 900px;
+        }
+
+        .band .stars {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .band .stars img { width: 34px; height: 34px; }
+
+        .band p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .band p .accent { color: var(--yellow); }
+
+        /* ── Latest Comic ── */
+        .latest-comic {
+            display: block;
+            max-width: 900px;
+            margin: 48px 0 0;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .latest-comic__inner {
+            display: flex;
+            background: #fff;
+            transition: opacity 0.15s;
+        }
+
+        .latest-comic:hover .latest-comic__inner {
+            opacity: 0.85;
+            cursor: pointer;
+        }
+
+        .latest-comic__cover {
+            flex: 0 0 320px;
+        }
+
+        .latest-comic__cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .latest-comic__content {
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .latest-comic__tag {
+            align-self: flex-start;
+            background: #000;
+            color: var(--yellow);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 7px 14px;
+            margin-bottom: 20px;
+        }
+
+        .latest-comic__content h3 {
+            font-family: 'Ark Sans', 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .latest-comic__genre {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .latest-comic__desc {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .latest-comic__more {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ── Portfolio Grid ── */
+        .portfolio { padding: 48px 0; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 20px 25px;
+            max-width: 900px;
+        }
+
+        .card {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            transition: opacity 0.15s;
+        }
+
+        a:has(.card) {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:has(.card):hover .card {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .card h3,
+        .card p {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .card p:last-child { padding-bottom: 10px; }
+
+        .card__cover {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .card__cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .card h3 {
+            font-family: 'Ark Sans', 'Roboto', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .card p strong { font-weight: 700; }
+
+        /* ── Footer ── */
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            gap: 6px;
+        }
+
+        .footer-links a {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { text-decoration: underline; }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .frame { padding: 0 20px; }
+            .bleed { margin-left: -20px; margin-right: -20px; }
+
+            header {
+                flex-wrap: nowrap;
+                gap: 14px;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 20px;
+            }
+            .brand .tagline { display: none; }
+
+            .headline h1 { font-size: 40px; }
+
+            .hero-img { height: 300px; }
+
+            .latest-comic { max-width: 100%; }
+            .latest-comic__inner { flex-direction: column; }
+            .latest-comic__cover { flex-basis: auto; height: 220px; }
+
+            .band { padding: 20px; }
+            .band__inner { flex-direction: column; align-items: flex-start; gap: 14px; max-width: 100%; }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px 16px;
+            }
+            .card h3 { font-size: 13px; }
+            .card p { font-size: 10px; }
+            .desktop-break { display: none; }
+
+            footer { padding: 16px 20px 0; }
+
+            .ticker__track span { font-size: 11px; }
+            .ticker__track .x { margin: 0 10px; }
+            .ticker__track .x img { width: 9px; height: 9px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header: brand + typewriter on the left, contact on the right -->
+    <header>
+        <div class="brand">
+            <a href="index.html" class="logo-link" aria-label="Home">
+                <div class="logo">
+                    <img src="site-images/SVG/logo.svg" alt="Mark Britt">
+                </div>
+            </a>
+            <span class="tagline"><span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">Mark Britt was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
+        </div>
+        <div class="nav-right">
+            <a href="mailto:markhavenbritt@gmail.com">contact</a>
+        </div>
+    </header>
+
+    <div class="frame">
+        <span class="page-tag">For Editors</span>
+
+        <!-- Big Headline -->
+        <section class="headline">
+            <h1 class="slide-in">Feral comic book<br>stories made by a<br><span class="accent">responsible adult.</span></h1>
+        </section>
+    </div><!-- end .frame -->
+
+    <!-- Marquee Ticker (full bleed) -->
+    <div class="ticker">
+        <div class="ticker__track">
+            <span>AMERICAN FIGHT COMICS <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> DEADLINE SMASHER <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> CREATIVE KAIJU <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> AMERICAN FIGHT COMICS <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> DEADLINE SMASHER <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> CREATIVE KAIJU <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> </span><span>AMERICAN FIGHT COMICS <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> DEADLINE SMASHER <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> CREATIVE KAIJU <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> AMERICAN FIGHT COMICS <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> DEADLINE SMASHER <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> CREATIVE KAIJU <span class="x"><img src="site-images/SVG/smallstar.svg" alt=""></span> </span>
+        </div>
+    </div>
+
+    <!-- Hero Slideshow -->
+    <div class="hero-img">
+        <div class="slides" id="heroSlides">
+            <img src="hero_binary.webp" alt="Binary">
+            <img src="hero_fullcolor.webp" alt="Full Color">
+            <img src="hero_ironman.webp" alt="Iron Man">
+            <img src="hero_monument.webp" alt="Monument">
+            <!-- clone of first for seamless loop -->
+            <img src="hero_binary.webp" alt="" aria-hidden="true">
+        </div>
+    </div>
+
+    <!-- Black bio band (full bleed) -->
+    <div class="band">
+        <div class="band__inner">
+            <div class="stars">
+                <img src="site-images/SVG/star-yellow.svg" alt="">
+                <img src="site-images/SVG/star-yellow.svg" alt="">
+            </div>
+            <p>I'm Mark Britt. Comic book maker. Published by Image Comics &amp; Marvel back in the day.<br class="desktop-break">
+            Interested in stories about humans shining in adversity, often involving martial arts and sorcery. <span class="accent">Good hang. Deadline slayer.</span></p>
+        </div>
+    </div>
+
+    <div class="frame">
+        <!-- Latest Comic -->
+        <a class="latest-comic" href="binary01.pdf" target="_blank">
+            <div class="latest-comic__inner">
+                <div class="latest-comic__cover">
+                    <img src="binary01_cover.webp" alt="Binary">
+                </div>
+                <div class="latest-comic__content">
+                    <span class="latest-comic__tag">Latest Comic</span>
+                    <h3>BINARY</h3>
+                    <p class="latest-comic__genre"><strong>GENRE:</strong> Sci-Fi Monster Fight</p>
+                    <p class="latest-comic__desc">Set in a post-war world filled with magic, industrial change, and mythic creatures, BINARY is part Dune and part Thundercats.</p>
+                    <p class="latest-comic__more">READ: Full issue</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Book Grid -->
+        <section class="portfolio">
+            <div class="grid">
+
+                <a href="monument_01.pdf" target="_blank">
+                <div class="card">
+                    <div class="card__cover"><img src="site-images/COVERS/monument_01_cover.webp" alt="Monument"></div>
+                    <h3>MONUMENT</h3>
+                    <p>A bittersweet tale of suburban life. Quirky and sincere, MONUMENT is a classic pop record in comic book form.</p>
+                    <p><strong>READ: Full issue</strong></p>
+                </div>
+                </a>
+
+                <a href="IRONMAN.pdf" target="_blank">
+                <div class="card">
+                    <div class="card__cover"><img src="site-images/COVERS/ironman__cover.webp" alt="Iron Man"></div>
+                    <h3>IRON MAN</h3>
+                    <p>Pepper Potts has a new piece of Stark Tech with her on the subway. Her trip to work quickly turns into a literal killer commute! Available on the Marvel App.</p>
+                    <p><strong>READ: Full issue</strong></p>
+                </div>
+                </a>
+
+                <a href="#" data-note="no-pdf-yet">
+                <div class="card">
+                    <div class="card__cover"><img src="site-images/COVERS/fullcolor_cover.jpg" alt="Full Color"></div>
+                    <h3>FULL COLOR</h3>
+                    <p>A lifetime of dealing with Napoleonic bosses has pushed Boon over the edge. She is out for revenge. Published by Image Comics, FULL COLOR is a high-octane New York odyssey.</p>
+                    <p><strong>READ: Full issue</strong></p>
+                </div>
+                </a>
+
+            </div>
+        </section>
+    </div><!-- end .frame -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-row">
+            <p>
+                Based in the SF Bay Area.<br>
+                <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
+                <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+            </p>
+            <nav class="footer-links">
+                <a href="mailto:markhavenbritt@gmail.com">Contact</a>
+            </nav>
+        </div>
+        <div class="base-bar"></div>
+    </footer>
+
+    <!-- Tagline typewriter: cycle full "Mark Britt is…" sentences -->
+    <script>
+        (function () {
+            const el = document.getElementById('typedRole');
+            if (!el) return;
+
+            const phrases = [
+                'Mark Britt writes comic books.',
+                'Mark Britt makes narrative art.',
+                'Mark Britt is gonna win the whole damn thing.',
+                'Mark Britt likes Larry Stroman art.',
+                "Mark Britt thinks you're doing great.",
+                'Mark Britt is a sober single dad.',
+                'Mark Britt was raised Irish Catholic but is now mostly witch.'
+            ];
+
+            const TYPE_SPEED   = 55;
+            const ERASE_SPEED  = 30;
+            const HOLD_FULL    = 1900;
+            const HOLD_EMPTY   = 350;
+
+            let p = 0, c = 0, erasing = false;
+
+            function tick() {
+                const phrase = phrases[p];
+                if (!erasing) {
+                    c++;
+                    el.textContent = phrase.slice(0, c);
+                    if (c === phrase.length) { erasing = true; return setTimeout(tick, HOLD_FULL); }
+                    return setTimeout(tick, TYPE_SPEED);
+                } else {
+                    c--;
+                    el.textContent = phrase.slice(0, c);
+                    if (c === 0) { erasing = false; p = (p + 1) % phrases.length; return setTimeout(tick, HOLD_EMPTY); }
+                    return setTimeout(tick, ERASE_SPEED);
+                }
+            }
+            tick();
+        })();
+    </script>
+
+    <!-- Hero slideshow: hold, then slide left to the next image -->
+    <script>
+        (function () {
+            const track = document.getElementById('heroSlides');
+            if (!track) return;
+            const total = track.querySelectorAll('img').length; // includes clone of first
+            const realCount = total - 1;
+            const HOLD = 3000;
+            let i = 0;
+
+            function advance() {
+                i++;
+                track.style.transition = 'transform 0.85s cubic-bezier(0.76, 0, 0.24, 1)';
+                track.style.transform = 'translateX(' + (-i * 100) + '%)';
+                if (i === realCount) {
+                    setTimeout(function () {
+                        track.style.transition = 'none';
+                        i = 0;
+                        track.style.transform = 'translateX(0)';
+                    }, 900);
+                }
+            }
+            setInterval(advance, HOLD);
+        })();
+    </script>
+
+    <!-- Reveal headline on load -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.slide-in').forEach(function (el) {
+                requestAnimationFrame(function () { el.classList.add('visible'); });
+            });
+        });
+    </script>
+
+</body>
+</html>
