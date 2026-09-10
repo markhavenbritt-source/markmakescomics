@@ -99,6 +99,64 @@
 
         .nav-right a:hover { text-decoration: underline; }
 
+        /* ── Menu toggle + dropdown panel ── */
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .menu-toggle .menu-caret {
+            color: #000;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-caret {
+            color: var(--red);
+            transform: rotate(180deg);
+        }
+
+        .menu-panel {
+            position: absolute;
+            top: 100%;
+            right: 40px;
+            width: 320px;
+            box-sizing: border-box;
+            background: #f0f0f0;
+            border: 1px solid #000;
+            border-top: none;
+            padding: 36px 32px;
+            display: none;
+            flex-direction: column;
+            z-index: 59;
+        }
+
+        .menu-panel.open { display: flex; }
+
+        .menu-panel a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            text-align: right;
+            padding: 16px 0;
+        }
+
+        .menu-panel a:hover { text-decoration: underline; }
+
         /* ── Page tag ── */
         .page-tag {
             display: inline-block;
@@ -412,6 +470,9 @@
             }
             .brand .tagline { display: none; }
 
+            .menu-panel { right: 20px; width: auto; left: 20px; padding: 28px 24px; }
+            .menu-panel a { font-size: 18px; padding: 14px 0; }
+
             .headline h1 { font-size: 40px; }
 
             .hero-img { height: 300px; }
@@ -452,8 +513,19 @@
             <span class="tagline"><span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">Mark Britt was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
         <div class="nav-right">
-            <a href="mailto:markhavenbritt@gmail.com">contact</a>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
+                MENU
+                <svg class="menu-caret" width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+                    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
+        <nav class="menu-panel" id="menuPanel">
+            <a href="contact.html">CONTACT</a>
+            <a href="foreditors.html">FOR EDITORS</a>
+            <a href="mailing-list.html">MAILING LIST</a>
+            <a href="index.html">HOME</a>
+        </nav>
     </header>
 
     <div class="frame">
@@ -627,6 +699,25 @@
                 }
             }
             setInterval(advance, HOLD);
+        })();
+    </script>
+
+    <!-- Menu toggle -->
+    <script>
+        (function () {
+            const btn = document.getElementById('menuToggle');
+            const panel = document.getElementById('menuPanel');
+            if (!btn || !panel) return;
+            function closeMenu() { btn.setAttribute('aria-expanded', 'false'); panel.classList.remove('open'); }
+            function openMenu() { btn.setAttribute('aria-expanded', 'true'); panel.classList.add('open'); }
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                (btn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+            });
+            document.addEventListener('click', function (e) {
+                if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+            });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
         })();
     </script>
 
