@@ -49,6 +49,8 @@
             font-weight: 300;
         }
 
+        .brand .tagline strong { font-weight: 700; }
+
         /* Reserve the width of the longest phrase so the header doesn't shift
            while the text types/erases. */
         .brand .tagline .typed-wrap {
@@ -510,7 +512,7 @@
                     <img src="site-images/SVG/logo.svg" alt="Mark Britt">
                 </div>
             </a>
-            <span class="tagline"><span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">Mark Britt was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
+            <span class="tagline"><strong>Mark Britt</strong> <span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
         <div class="nav-right">
             <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
@@ -642,13 +644,13 @@
             if (!el) return;
 
             const phrases = [
-                'Mark Britt writes comic books.',
-                'Mark Britt makes narrative art.',
-                'Mark Britt is gonna win the whole damn thing.',
-                'Mark Britt likes Larry Stroman art.',
-                "Mark Britt thinks you're doing great.",
-                'Mark Britt is a sober single dad.',
-                'Mark Britt was raised Irish Catholic but is now mostly witch.'
+                'writes comic books.',
+                'makes narrative art.',
+                'is gonna win the whole damn thing.',
+                'likes Larry Stroman art.',
+                "thinks you're doing great.",
+                'is a sober single dad.',
+                'was raised Irish Catholic but is now mostly witch.'
             ];
 
             const TYPE_SPEED   = 55;
