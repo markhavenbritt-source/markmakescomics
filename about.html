@@ -330,8 +330,49 @@
 
         .header-signup__status.visible { display: inline-block; }
 
-        @media (max-width: 1024px) {
-            .header-signup { display: none; }
+        @media (max-width: 768px) {
+            .header-signup {
+                width: calc(100% + 40px);
+                margin: 12px -20px 0;
+                padding: 14px 20px;
+                background: #000;
+                box-sizing: border-box;
+            }
+
+            .header-signup__controls {
+                width: 100%;
+                gap: 10px;
+            }
+
+            .header-signup__field {
+                flex: 1;
+                width: auto;
+                min-width: 0;
+                border: none;
+                background: #fff;
+                padding: 14px;
+                font-size: 13px;
+            }
+
+            .header-signup__submit {
+                flex-shrink: 0;
+                background: var(--yellow);
+                color: #000;
+                font-family: 'Roboto Mono', monospace;
+                font-weight: 700;
+                font-size: 12px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                padding: 14px 18px;
+            }
+
+            .header-signup__submit:hover { text-decoration: none; opacity: 0.85; }
+
+            .header-signup__status {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
         }
 
         .about-photo {
