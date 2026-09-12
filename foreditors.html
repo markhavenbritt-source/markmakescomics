@@ -8,7 +8,7 @@
     <meta property="og:title" content="Mark Britt — Comics">
     <meta property="og:description" content="Feral comic book stories made by a responsible adult.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="site-images/SVG/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="site-images/SVG/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -20,8 +20,6 @@
         }
 
         body { font-family: 'Roboto Mono', monospace; }
-
-        .desktop-break { display: block; }
 
         .bleed { margin-left: -40px; margin-right: -40px; }
 
@@ -258,7 +256,7 @@
 
         .band__inner {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 22px;
             max-width: 900px;
         }
@@ -293,11 +291,6 @@
             display: flex;
             background: #fff;
             transition: opacity 0.15s;
-        }
-
-        .latest-comic:hover .latest-comic__inner {
-            opacity: 0.85;
-            cursor: pointer;
         }
 
         .latest-comic__cover {
@@ -359,6 +352,7 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
+            margin-bottom: 8px;
         }
 
         /* ── Portfolio Grid ── */
@@ -379,18 +373,6 @@
             height: 100%;
             box-sizing: border-box;
             transition: opacity 0.15s;
-        }
-
-        a:has(.card) {
-            display: block;
-            height: 100%;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        a:has(.card):hover .card {
-            opacity: 0.8;
-            cursor: pointer;
         }
 
         .card h3,
@@ -432,6 +414,17 @@
         }
 
         .card p strong { font-weight: 700; }
+
+        .card p a,
+        .latest-comic__more a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card p a:hover,
+        .latest-comic__more a:hover {
+            text-decoration: underline;
+        }
 
         /* ── Footer ── */
         .footer-row {
@@ -492,13 +485,77 @@
             }
             .card h3 { font-size: 13px; }
             .card p { font-size: 10px; }
-            .desktop-break { display: none; }
-
             footer { padding: 16px 20px 0; }
 
             .ticker__track span { font-size: 11px; }
             .ticker__track .x { margin: 0 10px; }
             .ticker__track .x img { width: 9px; height: 9px; }
+        }
+        /* Mailing list — header module */
+        .header-signup {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-signup__controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-signup__field {
+            width: 200px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            background: transparent;
+            padding: 10px 14px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #000;
+        }
+
+        .header-signup__field::placeholder { color: #000; opacity: 1; }
+
+        .header-signup__field:focus {
+            outline: 2px solid var(--yellow);
+            outline-offset: -1px;
+        }
+
+        .header-signup__submit {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            color: #000;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .header-signup__submit:hover { text-decoration: underline; }
+
+        .header-signup__submit:disabled { opacity: 0.6; cursor: default; }
+
+        .header-signup__status {
+            display: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: #000;
+            color: var(--yellow);
+            padding: 10px 16px;
+            white-space: nowrap;
+        }
+
+        .header-signup__status.visible { display: inline-block; }
+
+        @media (max-width: 1024px) {
+            .header-signup { display: none; }
         }
     </style>
 </head>
@@ -514,6 +571,17 @@
             </a>
             <span class="tagline"><strong>Mark Britt</strong> <span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
+        <form class="header-signup" id="mailingListForm" method="POST" action="https://fca71fe8.sibforms.com/serve/MUIFAPks9JTrcaTc2XlYRPHrMPtzEj4LuWqXUcTPExwJB1HkzvJbl3c1mVeO4jYNJK7_eFRyNZ_D-JM-lZOXG23SIZZImLyJv5Uxkk5fZUT51TSItyN4S-CWoyGqLMnA-9CeZuqf3Jxx_Q6Eks-BjDDPfGC06LCwRXPeKChv83rffbN4cGw6AWjboKb45vIHfQpACPDePpBngz1M1A==" target="brevoHiddenFrame">
+            <span class="header-signup__controls">
+                <input type="email" name="EMAIL" class="header-signup__field" placeholder="ENTER EMAIL" aria-label="Enter email" autocomplete="email" required>
+                <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="locale" value="en">
+                <input type="hidden" name="html_type" value="simple">
+                <button type="submit" class="header-signup__submit">Join the mailing list.</button>
+            </span>
+            <span class="header-signup__status" id="mailingListStatus">Signed Up &mdash; Check Email</span>
+        </form>
+        <iframe name="brevoHiddenFrame" style="display:none" aria-hidden="true" tabindex="-1" title="Brevo form submission target"></iframe>
         <div class="nav-right">
             <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
                 MENU
@@ -523,9 +591,12 @@
             </button>
         </div>
         <nav class="menu-panel" id="menuPanel">
+            <a href="index.html#comics">COMICS</a>
+            <a href="about.html">ABOUT</a>
+            <a href="store.html">STORE</a>
             <a href="contact.html">CONTACT</a>
-            <a href="foreditors.html">FOR EDITORS</a>
             <a href="mailing-list.html">MAILING LIST</a>
+            <a href="foreditors.html">FOR EDITORS</a>
             <a href="index.html">HOME</a>
         </nav>
     </header>
@@ -551,8 +622,8 @@
         <div class="slides" id="heroSlides">
             <img src="hero_binary.webp" alt="Binary">
             <img src="hero_fullcolor.webp" alt="Full Color">
-            <img src="hero_ironman.webp" alt="Iron Man">
-            <img src="hero_monument.webp" alt="Monument">
+            <img src="hero_ironman.webp" alt="Iron Man" style="object-position: center bottom;">
+            <img src="hero_monument.webp" alt="Monument" style="object-position: center top;">
             <!-- clone of first for seamless loop -->
             <img src="hero_binary.webp" alt="" aria-hidden="true">
         </div>
@@ -565,14 +636,13 @@
                 <img src="site-images/SVG/star-yellow.svg" alt="">
                 <img src="site-images/SVG/star-yellow.svg" alt="">
             </div>
-            <p>I'm Mark Britt. Comic book maker. Published by Image Comics &amp; Marvel back in the day.<br class="desktop-break">
-            Interested in stories about humans shining in adversity, often involving martial arts and sorcery. <span class="accent">Good hang. Deadline slayer.</span></p>
+            <p>I'm Mark Britt. Comic book maker. Published by Image Comics &amp; Marvel back in the day. Interested in stories about humans shining in adversity, often involving martial arts and sorcery. <span class="accent">Good hang. Deadline slayer.</span></p>
         </div>
     </div>
 
     <div class="frame">
         <!-- Latest Comic -->
-        <a class="latest-comic" href="binary01.pdf" target="_blank">
+        <div class="latest-comic">
             <div class="latest-comic__inner">
                 <div class="latest-comic__cover">
                     <img src="binary01_cover.webp" alt="Binary">
@@ -582,41 +652,39 @@
                     <h3>BINARY</h3>
                     <p class="latest-comic__genre"><strong>GENRE:</strong> Sci-Fi Monster Fight</p>
                     <p class="latest-comic__desc">Set in a post-war world filled with magic, industrial change, and mythic creatures, BINARY is part Dune and part Thundercats.</p>
-                    <p class="latest-comic__more">READ: Full issue</p>
+                    <p class="latest-comic__more"><a href="binary.html"><strong>OVERVIEW</strong></a></p>
+                    <p class="latest-comic__more"><a href="binary01.pdf" target="_blank"><strong>READ: Full issue</strong></a></p>
                 </div>
             </div>
-        </a>
+        </div>
 
         <!-- Book Grid -->
         <section class="portfolio">
             <div class="grid">
 
-                <a href="monument_01.pdf" target="_blank">
                 <div class="card">
                     <div class="card__cover"><img src="site-images/COVERS/monument_01_cover.webp" alt="Monument"></div>
                     <h3>MONUMENT</h3>
-                    <p>A bittersweet tale of suburban life. Quirky and sincere, MONUMENT is a classic pop record in comic book form.</p>
-                    <p><strong>READ: Full issue</strong></p>
+                    <p>When a high school student is murdered in a tight-knit Boston suburb, anonymous letters begin exposing the community’s darkest secrets. As fear and suspicion spread, life goes forward as Declan and his friends approach graduation. Is one of them the killer?</p>
+                    <p><a href="monument.html"><strong>OVERVIEW</strong></a></p>
+                    <p><a href="monument_01.pdf" target="_blank"><strong>READ: Full issue</strong></a></p>
                 </div>
-                </a>
 
-                <a href="IRONMAN.pdf" target="_blank">
                 <div class="card">
                     <div class="card__cover"><img src="site-images/COVERS/ironman__cover.webp" alt="Iron Man"></div>
                     <h3>IRON MAN</h3>
                     <p>Pepper Potts has a new piece of Stark Tech with her on the subway. Her trip to work quickly turns into a literal killer commute! Available on the Marvel App.</p>
-                    <p><strong>READ: Full issue</strong></p>
+                    <p><a href="ironman.html"><strong>OVERVIEW</strong></a></p>
+                    <p><a href="IRONMAN.pdf" target="_blank"><strong>READ: Full issue</strong></a></p>
                 </div>
-                </a>
 
-                <a href="#" data-note="no-pdf-yet">
                 <div class="card">
                     <div class="card__cover"><img src="site-images/COVERS/fullcolor_cover.jpg" alt="Full Color"></div>
                     <h3>FULL COLOR</h3>
                     <p>A lifetime of dealing with Napoleonic bosses has pushed Boon over the edge. She is out for revenge. Published by Image Comics, FULL COLOR is a high-octane New York odyssey.</p>
-                    <p><strong>READ: Full issue</strong></p>
+                    <p><a href="fullcolor.html"><strong>OVERVIEW</strong></a></p>
+                    <p><a href="fullcolor_chapter01.pdf" target="_blank"><strong>READ: First chapter</strong></a></p>
                 </div>
-                </a>
 
             </div>
         </section>
@@ -627,11 +695,10 @@
         <div class="footer-row">
             <p>
                 Based in the SF Bay Area.<br>
-                <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
-                <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+                <a href="contact.html">markhavenbritt@gmail.com</a>
             </p>
             <nav class="footer-links">
-                <a href="mailto:markhavenbritt@gmail.com">Contact</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
         <div class="base-bar"></div>
@@ -730,6 +797,27 @@
                 requestAnimationFrame(function () { el.classList.add('visible'); });
             });
         });
+    </script>
+
+    <!-- Header mailing list module: fake-submit, show a persistent signed-up indicator -->
+    <script>
+        (function () {
+            var form = document.getElementById('mailingListForm');
+            var status = document.getElementById('mailingListStatus');
+            if (!form || !status) return;
+            var controls = form.querySelector('.header-signup__controls');
+            var submitBtn = form.querySelector('.header-signup__submit');
+
+            form.addEventListener('submit', function () {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Joining...';
+
+                setTimeout(function () {
+                    controls.style.display = 'none';
+                    status.className = 'header-signup__status visible';
+                }, 600);
+            });
+        })();
     </script>
 
 </body>

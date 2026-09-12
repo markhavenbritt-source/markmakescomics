@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FULL COLOR — Mark Britt Comics</title>
-    <meta property="og:title" content="FULL COLOR — Mark Britt Comics">
-    <meta property="og:description" content="A lifetime of dealing with Napoleonic bosses has pushed Boom over the edge. She is out for revenge. FULL COLOR is a high-octane New York odyssey.">
+    <title>About — Mark Britt Comics</title>
+    <meta property="og:title" content="About — Mark Britt Comics">
+    <meta property="og:description" content="Mark Britt on the long way back to making comics, and what he's working on right now.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="site-images/SVG/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,6 +155,86 @@
 
         .menu-panel a:hover { text-decoration: underline; }
 
+        /* ── Contact form ── */
+        .form-box { max-width: 520px; }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .form-row .form-field { flex: 1; }
+
+        .form-field { margin-bottom: 22px; }
+
+        .form-field:last-of-type { margin-bottom: 28px; }
+
+        .form-field label {
+            display: block;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            background: #f0f0f0;
+            padding: 12px 14px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: 2px solid var(--yellow);
+            outline-offset: -1px;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-submit {
+            display: inline-block;
+            background: #000;
+            color: var(--yellow);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-submit:hover { background: var(--red); color: #fff; }
+
+        .form-submit:disabled { opacity: 0.6; cursor: default; }
+
+        .form-status {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            border: 1px solid #000;
+        }
+
+        .form-status.visible { display: block; }
+
+        .form-status.success { background: var(--yellow); }
+
+        .form-status.error { background: var(--red); color: #fff; border-color: var(--red); }
+
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
 
@@ -169,6 +249,8 @@
 
             .menu-panel { right: 20px; width: auto; left: 20px; padding: 28px 24px; }
             .menu-panel a { font-size: 18px; padding: 14px 0; }
+
+            .form-row { flex-direction: column; gap: 0; }
 
             footer { padding: 16px 20px 0; }
         }
@@ -239,22 +321,17 @@
             .header-signup { display: none; }
         }
 
-        .read-issue-btn {
-            display: inline-block;
-            background: #000;
-            color: var(--yellow);
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 14px 28px;
-            margin-top: 8px;
-            text-decoration: none;
+        .about-photo {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            margin: 0 0 24px;
         }
 
-        .read-issue-btn:hover {
-            text-decoration: underline;
+        /* This page's text column runs full width of the box, so the
+           right-hand gutter matches the left (24px box padding on both). */
+        .preview-box p {
+            max-width: none;
         }
     </style>
 </head>
@@ -301,54 +378,30 @@
 
     <div class="frame">
 
-        <!-- Title + format facts -->
+        <!-- Title -->
         <section class="preview-hero">
-            <h1 class="slide-in">FULL COLOR</h1>
-            <p class="preview-hero__facts">Black &amp; white &nbsp;&middot;&nbsp; Original graphic novel &nbsp;&middot;&nbsp; Published by Image Comics &nbsp;&middot;&nbsp; 170 pages</p>
+            <h1 class="slide-in">Hi, friend. I'm Mark.<br>I make rad comics.</h1>
         </section>
 
-        <!-- Genre -->
-        <span class="preview-tag">Genre: Crime Drama / Urban Noir</span>
-
-        <!-- Hero image -->
-        <img class="preview-full-image" src="site-images/fullcolor-preview/hero.webp" alt="A hooded figure in the rain, close on a clenched jaw">
-
-        <!-- Summary -->
+        <!-- Bio + current work, one block -->
         <div class="preview-box">
-            <div class="color-bar"></div>
-            <h2>Summary</h2>
-            <p>A lifetime marked with Napoleonic bosses has generated a rage in Boom that she can't contain anymore &mdash; only aim. Her target? Her boss.</p>
-            <p>That same day, Boom comes home to find an old friend standing on her fire escape. David's double-crossed a drug dealer and he's looking for help. FULL COLOR is an action-packed odyssey through New York.</p>
-            <a class="read-issue-btn" href="fullcolor_chapter01.pdf" target="_blank">READ ISSUE</a>
+            <img class="about-photo" src="aboutpic.webp" alt="Mark Britt">
+            <p>Some personal lore: Image and Marvel published me back before I had a son. He's grown now and more time has passed than I care to admit. Now I'm back making comics full tilt. My life has not been linear. Kid to raise. Multiple careers and pivots but I never stopped making. Real talk, I got here the hard way, but I have an array of skills, including ZERO QUIT. I work as a fractional brand creative director, and that has blessed me with bandwidth to make art and tell stories.</p>
+            <p>What I am doing:</p>
+            <h2>Binary</h2>
+            <p>My 140% Kickstarter backed comic BINARY recently came out. I wrote it and collaborated with some friends on the art. It's a sci-fi monster fight book that's part Dune, part Thundercats, and yes it took way too many all-nighters to finish.</p>
+            <h2>Railgun</h2>
+            <p>RAILGUN is rolling out through Instagram. It's X-Files and Hellboy riding on the backs of the American rail system. Hobo Hellboy. It is made as fast as humanly possible. Keep an eye out for my 100 Comics in 100 Days.</p>
+            <h2>Monument</h2>
+            <p>MONUMENT keeps growing whether I plan for it or not. It's a small town murder mystery set in Massachusetts.</p>
+            <h2>Twinstar Comics</h2>
+            <p>TWINSTAR COMICS is the next level, future, digital-first comics company I'm building with a couple of collaborators. It's a place to put all of my various lives together like Voltron.</p>
+            <p style="margin-bottom: 0;">Maybe you're an editor looking for an elite writer to slot in and deliver great stories or the next big franchise player. Maybe you're a fan of my work looking to see more. Come on in, pull up a chair, friend. You're the most important person here. Stick around. This is going to be fun.</p>
         </div>
 
-        <!-- Page gallery -->
-        <div class="page-grid">
-            <img src="site-images/fullcolor-preview/page-01.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-02.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-03.webp" alt="Full Color preview page" loading="lazy">
-        </div>
-        <div class="page-grid">
-            <img src="site-images/fullcolor-preview/page-04.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-05.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-06.webp" alt="Full Color preview page" loading="lazy">
-        </div>
-
-        <!-- Credits -->
-        <div class="preview-box">
-            <div class="color-bar"></div>
-            <h2>Credits</h2>
-            <div class="credits-list">
-                <p><strong>Story &amp; Art</strong> Mark Haven Britt</p>
-                <p><strong>Format</strong> Black &amp; white, 170 pages</p>
-                <p><strong>Publisher</strong> Image Comics</p>
-                <p><strong>Recognition</strong> Xeric Award winner</p>
-            </div>
-        </div>
-
-        <!-- Back to all comics -->
+        <!-- Back to home -->
         <nav class="preview-nav">
-            <a href="index.html">&larr; All Comics</a>
+            <a href="index.html">&larr; Back to Home</a>
         </nav>
 
     </div><!-- end .frame -->
@@ -391,7 +444,6 @@
             });
         });
     </script>
-
     <!-- Tagline typewriter: cycle full "Mark Britt is..." sentences -->
     <script>
         (function () {

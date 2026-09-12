@@ -8,7 +8,7 @@
     <meta property="og:title" content="Mailing List — Mark Britt Comics">
     <meta property="og:description" content="Join the mailing list for new comics and updates from Mark Britt.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="site-images/SVG/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="site-images/SVG/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -45,6 +45,48 @@
         }
 
         .brand .tagline strong { font-weight: 700; }
+
+        .brand .tagline .typed { font-weight: 300; }
+
+        /* Reserve the width of the longest phrase so the header doesn't shift
+           while the text types/erases. */
+        .brand .tagline .typed-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand .tagline .typed-sizer {
+            visibility: hidden;
+            white-space: nowrap;
+        }
+
+        .brand .tagline .typed-live {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        .brand .tagline .typed strong { font-weight: 700; }
+
+        .brand .tagline .type-cursor {
+            display: inline-block;
+            width: 1px;
+            height: 1em;
+            margin-left: 1px;
+            background: #000;
+            vertical-align: text-bottom;
+            animation: type-blink 1s step-end infinite;
+        }
+
+        @keyframes type-blink {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .brand .tagline .type-cursor { animation: none; }
+        }
 
         .nav-right a {
             font-family: 'Roboto', sans-serif;
@@ -167,17 +209,31 @@
         .form-status {
             display: none;
             margin-top: 18px;
-            padding: 14px 16px;
+            padding: 16px 18px;
             font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            border: 1px solid #000;
         }
 
         .form-status.visible { display: block; }
 
-        .form-status.success { background: var(--yellow); }
+        .form-status.success { background: #000; color: var(--yellow); }
 
-        .form-status.error { background: var(--red); color: #fff; border-color: var(--red); }
+        .form-status.error { background: var(--red); color: #fff; }
+
+        .form-status__label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .form-status__note {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
 
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
@@ -197,6 +253,10 @@
 
             footer { padding: 16px 20px 0; }
         }
+        .preview-nav {
+            border-top: none;
+            justify-content: flex-start;
+        }
     </style>
 </head>
 <body>
@@ -208,7 +268,7 @@
                     <img src="site-images/SVG/logo.svg" alt="Mark Britt">
                 </div>
             </a>
-            <span class="tagline"><strong>Mark Britt</strong> writes comic books.</span>
+            <span class="tagline"><strong>Mark Britt</strong> <span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
         <div class="nav-right">
             <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
@@ -219,9 +279,12 @@
             </button>
         </div>
         <nav class="menu-panel" id="menuPanel">
+            <a href="index.html#comics">COMICS</a>
+            <a href="about.html">ABOUT</a>
+            <a href="store.html">STORE</a>
             <a href="contact.html">CONTACT</a>
-            <a href="foreditors.html">FOR EDITORS</a>
             <a href="mailing-list.html">MAILING LIST</a>
+            <a href="foreditors.html">FOR EDITORS</a>
             <a href="index.html">HOME</a>
         </nav>
     </header>
@@ -233,24 +296,23 @@
             <h1 class="slide-in">MAILING LIST</h1>
         </section>
 
-        <span class="preview-tag">Stay In The Loop</span>
-
         <!-- Mailing list signup form (Brevo) -->
         <div class="preview-box form-box">
-            <div class="color-bar"></div>
             <h2>Join the List</h2>
-            <p style="margin-bottom: 24px; max-width: 440px;">New comics, previews, and the occasional deadline-slaying update. No spam.</p>
+            <p style="margin-bottom: 24px; max-width: 440px;">New comics, access to the secret blog, and the occasional update. All killer no filler.</p>
             <form class="site-form" id="mailingListForm" method="POST" action="https://fca71fe8.sibforms.com/serve/MUIFAPks9JTrcaTc2XlYRPHrMPtzEj4LuWqXUcTPExwJB1HkzvJbl3c1mVeO4jYNJK7_eFRyNZ_D-JM-lZOXG23SIZZImLyJv5Uxkk5fZUT51TSItyN4S-CWoyGqLMnA-9CeZuqf3Jxx_Q6Eks-BjDDPfGC06LCwRXPeKChv83rffbN4cGw6AWjboKb45vIHfQpACPDePpBngz1M1A==" target="brevoHiddenFrame">
                 <div class="form-field">
-                    <label for="mlEmail">Email Address</label>
-                    <input type="email" id="mlEmail" name="EMAIL" autocomplete="email" required>
+                    <input type="email" id="mlEmail" name="EMAIL" autocomplete="email" placeholder="Enter email" aria-label="Enter email" required>
                 </div>
                 <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off">
                 <input type="hidden" name="locale" value="en">
                 <input type="hidden" name="html_type" value="simple">
                 <button type="submit" class="form-submit">Subscribe</button>
             </form>
-            <div class="form-status" id="mailingListStatus"></div>
+            <div class="form-status" id="mailingListStatus">
+                <span class="form-status__label">Signed Up</span>
+                <span class="form-status__note">Check your email to confirm your subscription.</span>
+            </div>
         </div>
         <iframe name="brevoHiddenFrame" style="display:none" aria-hidden="true" tabindex="-1" title="Brevo form submission target"></iframe>
 
@@ -266,11 +328,10 @@
         <div class="footer-row">
             <p>
                 Based in the SF Bay Area.<br>
-                <a href="https://linkedin.com/in/markhavenbritt" target="_blank">On LinkedIn</a><br>
-                <a href="mailto:markhavenbritt@gmail.com">markhavenbritt@gmail.com</a>
+                <a href="contact.html">markhavenbritt@gmail.com</a>
             </p>
             <nav class="footer-links">
-                <a href="mailto:markhavenbritt@gmail.com">Contact</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
         <div class="base-bar"></div>
@@ -311,15 +372,53 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Subscribing...';
 
-                status.textContent = "Almost there \u2014 check your email to confirm your subscription.";
-                status.className = 'form-status visible success';
-
                 setTimeout(function () {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Subscribe';
-                    form.reset();
-                }, 1500);
+                    form.style.display = 'none';
+                    status.className = 'form-status visible success';
+                }, 600);
             });
+        })();
+    </script>
+
+    <!-- Tagline typewriter: cycle full "Mark Britt is..." sentences -->
+    <script>
+        (function () {
+            const el = document.getElementById('typedRole');
+            if (!el) return;
+
+            const phrases = [
+                'writes comic books.',
+                "thinks you're doing great.",
+                'draws rad comics.',
+                'makes narrative art.',
+                'is gonna win the whole damn thing.',
+                'likes Larry Stroman art.',
+                'is a sober single dad.',
+                'was raised Irish Catholic but is now mostly witch.'
+            ];
+
+            const TYPE_SPEED   = 55;
+            const ERASE_SPEED  = 30;
+            const HOLD_FULL    = 1900;
+            const HOLD_EMPTY   = 350;
+
+            let p = 0, c = 0, erasing = false;
+
+            function tick() {
+                const phrase = phrases[p];
+                if (!erasing) {
+                    c++;
+                    el.textContent = phrase.slice(0, c);
+                    if (c === phrase.length) { erasing = true; return setTimeout(tick, HOLD_FULL); }
+                    return setTimeout(tick, TYPE_SPEED);
+                } else {
+                    c--;
+                    el.textContent = phrase.slice(0, c);
+                    if (c === 0) { erasing = false; p = (p + 1) % phrases.length; return setTimeout(tick, HOLD_EMPTY); }
+                    return setTimeout(tick, ERASE_SPEED);
+                }
+            }
+            tick();
         })();
     </script>
 

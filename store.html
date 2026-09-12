@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FULL COLOR — Mark Britt Comics</title>
-    <meta property="og:title" content="FULL COLOR — Mark Britt Comics">
-    <meta property="og:description" content="A lifetime of dealing with Napoleonic bosses has pushed Boom over the edge. She is out for revenge. FULL COLOR is a high-octane New York odyssey.">
+    <title>Store — Mark Britt Comics</title>
+    <meta property="og:title" content="Store — Mark Britt Comics">
+    <meta property="og:description" content="New comics drop coming Fall 2026. Join the mailing list for early access.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="site-images/SVG/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,6 +155,86 @@
 
         .menu-panel a:hover { text-decoration: underline; }
 
+        /* ── Store / signup form ── */
+        .form-box { max-width: 520px; }
+
+        .form-field { margin-bottom: 22px; }
+
+        .form-field:last-of-type { margin-bottom: 28px; }
+
+        .form-field label {
+            display: block;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-field input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            background: #f0f0f0;
+            padding: 12px 14px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .form-field input:focus {
+            outline: 2px solid var(--yellow);
+            outline-offset: -1px;
+        }
+
+        .form-submit {
+            display: inline-block;
+            background: #000;
+            color: var(--yellow);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-submit:hover { background: var(--red); color: #fff; }
+
+        .form-submit:disabled { opacity: 0.6; cursor: default; }
+
+        .form-status {
+            display: none;
+            margin-top: 18px;
+            padding: 16px 18px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .form-status.visible { display: block; }
+
+        .form-status.success { background: #000; color: var(--yellow); }
+
+        .form-status.error { background: var(--red); color: #fff; }
+
+        .form-status__label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .form-status__note {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
         @media (max-width: 768px) {
             .frame { padding: 0 20px; }
 
@@ -170,91 +250,19 @@
             .menu-panel { right: 20px; width: auto; left: 20px; padding: 28px 24px; }
             .menu-panel a { font-size: 18px; padding: 14px 0; }
 
+
             footer { padding: 16px 20px 0; }
         }
-        /* Mailing list — header module */
-        .header-signup {
-            display: flex;
-            align-items: center;
+        .store-hero {
+            background: var(--red);
+            padding-bottom: 40px;
         }
 
-        .header-signup__controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .header-signup__field {
-            width: 200px;
-            box-sizing: border-box;
-            border: 1px solid #000;
-            background: transparent;
-            padding: 10px 14px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            text-align: center;
-            color: #000;
-        }
-
-        .header-signup__field::placeholder { color: #000; opacity: 1; }
-
-        .header-signup__field:focus {
-            outline: 2px solid var(--yellow);
-            outline-offset: -1px;
-        }
-
-        .header-signup__submit {
-            background: none;
-            border: none;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 300;
-            font-size: 15px;
-            color: #000;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .header-signup__submit:hover { text-decoration: underline; }
-
-        .header-signup__submit:disabled { opacity: 0.6; cursor: default; }
-
-        .header-signup__status {
-            display: none;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            background: #000;
-            color: var(--yellow);
-            padding: 10px 16px;
-            white-space: nowrap;
-        }
-
-        .header-signup__status.visible { display: inline-block; }
-
-        @media (max-width: 1024px) {
-            .header-signup { display: none; }
-        }
-
-        .read-issue-btn {
-            display: inline-block;
-            background: #000;
-            color: var(--yellow);
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 14px 28px;
-            margin-top: 8px;
-            text-decoration: none;
-        }
-
-        .read-issue-btn:hover {
-            text-decoration: underline;
+        .preview-nav {
+            border-top: none;
+            margin-top: 0;
+            padding: 8px 0 20px;
+            justify-content: flex-start;
         }
     </style>
 </head>
@@ -269,17 +277,6 @@
             </a>
             <span class="tagline"><strong>Mark Britt</strong> <span class="typed-wrap"><span class="typed-sizer" aria-hidden="true">was raised Irish Catholic but is now mostly witch.</span><span class="typed-live"><span class="typed" id="typedRole"></span><span class="type-cursor" aria-hidden="true"></span></span></span></span>
         </div>
-        <form class="header-signup" id="mailingListForm" method="POST" action="https://fca71fe8.sibforms.com/serve/MUIFAPks9JTrcaTc2XlYRPHrMPtzEj4LuWqXUcTPExwJB1HkzvJbl3c1mVeO4jYNJK7_eFRyNZ_D-JM-lZOXG23SIZZImLyJv5Uxkk5fZUT51TSItyN4S-CWoyGqLMnA-9CeZuqf3Jxx_Q6Eks-BjDDPfGC06LCwRXPeKChv83rffbN4cGw6AWjboKb45vIHfQpACPDePpBngz1M1A==" target="brevoHiddenFrame">
-            <span class="header-signup__controls">
-                <input type="email" name="EMAIL" class="header-signup__field" placeholder="ENTER EMAIL" aria-label="Enter email" autocomplete="email" required>
-                <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off">
-                <input type="hidden" name="locale" value="en">
-                <input type="hidden" name="html_type" value="simple">
-                <button type="submit" class="header-signup__submit">Join the mailing list.</button>
-            </span>
-            <span class="header-signup__status" id="mailingListStatus">Signed Up &mdash; Check Email</span>
-        </form>
-        <iframe name="brevoHiddenFrame" style="display:none" aria-hidden="true" tabindex="-1" title="Brevo form submission target"></iframe>
         <div class="nav-right">
             <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
                 MENU
@@ -299,58 +296,43 @@
         </nav>
     </header>
 
-    <div class="frame">
+    <section class="store-hero">
+        <div class="frame">
 
-        <!-- Title + format facts -->
-        <section class="preview-hero">
-            <h1 class="slide-in">FULL COLOR</h1>
-            <p class="preview-hero__facts">Black &amp; white &nbsp;&middot;&nbsp; Original graphic novel &nbsp;&middot;&nbsp; Published by Image Comics &nbsp;&middot;&nbsp; 170 pages</p>
-        </section>
+            <!-- Title -->
+            <section class="preview-hero">
+                <h1 class="slide-in">SOLD OUT</h1>
+            </section>
 
-        <!-- Genre -->
-        <span class="preview-tag">Genre: Crime Drama / Urban Noir</span>
-
-        <!-- Hero image -->
-        <img class="preview-full-image" src="site-images/fullcolor-preview/hero.webp" alt="A hooded figure in the rain, close on a clenched jaw">
-
-        <!-- Summary -->
-        <div class="preview-box">
-            <div class="color-bar"></div>
-            <h2>Summary</h2>
-            <p>A lifetime marked with Napoleonic bosses has generated a rage in Boom that she can't contain anymore &mdash; only aim. Her target? Her boss.</p>
-            <p>That same day, Boom comes home to find an old friend standing on her fire escape. David's double-crossed a drug dealer and he's looking for help. FULL COLOR is an action-packed odyssey through New York.</p>
-            <a class="read-issue-btn" href="fullcolor_chapter01.pdf" target="_blank">READ ISSUE</a>
-        </div>
-
-        <!-- Page gallery -->
-        <div class="page-grid">
-            <img src="site-images/fullcolor-preview/page-01.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-02.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-03.webp" alt="Full Color preview page" loading="lazy">
-        </div>
-        <div class="page-grid">
-            <img src="site-images/fullcolor-preview/page-04.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-05.webp" alt="Full Color preview page" loading="lazy">
-            <img src="site-images/fullcolor-preview/page-06.webp" alt="Full Color preview page" loading="lazy">
-        </div>
-
-        <!-- Credits -->
-        <div class="preview-box">
-            <div class="color-bar"></div>
-            <h2>Credits</h2>
-            <div class="credits-list">
-                <p><strong>Story &amp; Art</strong> Mark Haven Britt</p>
-                <p><strong>Format</strong> Black &amp; white, 170 pages</p>
-                <p><strong>Publisher</strong> Image Comics</p>
-                <p><strong>Recognition</strong> Xeric Award winner</p>
+            <!-- Drop notice + signup form (Brevo) -->
+            <div class="preview-box form-box">
+                <h2>New Comics Drop Coming Fall 2026</h2>
+                <p style="margin-bottom: 24px; max-width: 440px;">Get early access to comics, special offers, secret blog and other shenanigans available only to newsletter subscribers.</p>
+                <form class="site-form" id="mailingListForm" method="POST" action="https://fca71fe8.sibforms.com/serve/MUIFAPks9JTrcaTc2XlYRPHrMPtzEj4LuWqXUcTPExwJB1HkzvJbl3c1mVeO4jYNJK7_eFRyNZ_D-JM-lZOXG23SIZZImLyJv5Uxkk5fZUT51TSItyN4S-CWoyGqLMnA-9CeZuqf3Jxx_Q6Eks-BjDDPfGC06LCwRXPeKChv83rffbN4cGw6AWjboKb45vIHfQpACPDePpBngz1M1A==" target="brevoHiddenFrame">
+                    <div class="form-field">
+                        <input type="email" id="mlEmail" name="EMAIL" autocomplete="email" placeholder="Enter email" aria-label="Enter email" required>
+                    </div>
+                    <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off">
+                    <input type="hidden" name="locale" value="en">
+                    <input type="hidden" name="html_type" value="simple">
+                    <button type="submit" class="form-submit">Subscribe</button>
+                </form>
+                <div class="form-status" id="mailingListStatus">
+                    <span class="form-status__label">Signed Up</span>
+                    <span class="form-status__note">Check your email to confirm your subscription.</span>
+                </div>
             </div>
+
         </div>
+    </section>
 
-        <!-- Back to all comics -->
+    <iframe name="brevoHiddenFrame" style="display:none" aria-hidden="true" tabindex="-1" title="Brevo form submission target"></iframe>
+
+    <div class="frame">
+        <!-- Back to home -->
         <nav class="preview-nav">
-            <a href="index.html">&larr; All Comics</a>
+            <a href="index.html">&larr; Back to Home</a>
         </nav>
-
     </div><!-- end .frame -->
 
     <!-- Footer -->
@@ -390,6 +372,24 @@
                 requestAnimationFrame(function () { el.classList.add('visible'); });
             });
         });
+    </script>
+    <script>
+        (function () {
+            var form = document.getElementById('mailingListForm');
+            var status = document.getElementById('mailingListStatus');
+            if (!form || !status) return;
+            var submitBtn = form.querySelector('.form-submit');
+
+            form.addEventListener('submit', function () {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+
+                setTimeout(function () {
+                    form.style.display = 'none';
+                    status.className = 'form-status visible success';
+                }, 600);
+            });
+        })();
     </script>
 
     <!-- Tagline typewriter: cycle full "Mark Britt is..." sentences -->
@@ -431,27 +431,6 @@
                 }
             }
             tick();
-        })();
-    </script>
-
-    <!-- Header mailing list module: fake-submit, show a persistent signed-up indicator -->
-    <script>
-        (function () {
-            var form = document.getElementById('mailingListForm');
-            var status = document.getElementById('mailingListStatus');
-            if (!form || !status) return;
-            var controls = form.querySelector('.header-signup__controls');
-            var submitBtn = form.querySelector('.header-signup__submit');
-
-            form.addEventListener('submit', function () {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Joining...';
-
-                setTimeout(function () {
-                    controls.style.display = 'none';
-                    status.className = 'header-signup__status visible';
-                }, 600);
-            });
         })();
     </script>
 
